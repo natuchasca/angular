@@ -26,6 +26,15 @@ export class HeroesComponent implements OnInit {
   }
   // Observable.subscribe() is the critical difference. The previous version assigns an array of heroes to the component's heroes property. The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
