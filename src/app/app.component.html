@@ -1,40 +1,29 @@
 <mat-sidenav-container class="">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                (closed)="events.push('close!')">
-    <h1>{{title}}</h1>
-    <nav>
-      <ul>
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/heroes">Heroes</a></li>
-      </ul>
-    </nav>
-
+    <h1>{{ title }}</h1>
+    <mat-list>
+     <mat-list-item><a routerLink="/dashboard">Dashboard</a></mat-list-item>
+     <mat-list-item><a routerLink="/heroes">Heroes</a></mat-list-item>
+    </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon aria-label="menu">menu</mat-icon>
+      </button>
+   
+      <h1>{{title}}</h1>
+   
+      <app-hero-search></app-hero-search>
 
-    <mat-toolbar color="">
-      <div class="row" fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
-        <div fxFlex="10%">
-          <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
-          </button>
-        </div>
-        <div fxFlex="20%">
-          <h1>{{title}}</h1>
-        </div>
-        <div fxFlex="40%">
-          <app-hero-search></app-hero-search>
-        </div>
-        <div fxFlex="30%">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit totam, earum! Quae, consequuntur, ratione. In numquam, obcaecati ab eum! Dolor dicta impedit eum quidem quis perferendis quibusdam blanditiis, explicabo eius.
-        </div>
-      </div>
     </mat-toolbar>
+    <div class="content">
+      
 
-    <app-hero-search></app-hero-search>
+      <router-outlet></router-outlet>
 
-    <router-outlet></router-outlet>
-    <app-messages></app-messages>
-
+      <app-messages></app-messages>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

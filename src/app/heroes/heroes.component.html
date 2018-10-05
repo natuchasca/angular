@@ -1,24 +1,16 @@
-<h2>My Heroes</h2>
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    add
-  </button>
-</div>
-<!-- <ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-  (click)="delete(hero)">x</button>
-  </li>
-</ul> -->
+<mat-card>
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+    <label>Add hero:
+      <input #heroName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button mat-flat-button color="primary" (click)="add(heroName.value); heroName.value=''">
+      <mat-icon aria-label="add">add</mat-icon>Add Hero
+    </button>
+  </mat-card-content>
+</mat-card>
 
-<mat-card class="example-card">
+<mat-card>
   <mat-card-content>
     <mat-list class="heroes">
       <mat-list-item *ngFor="let hero of heroes">
@@ -28,11 +20,23 @@
           <span class="badge">{{hero.id}}</span> {{hero.name}}
         </a>
 
-        <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
+        <!-- <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button> -->
+        <button mat-icon-button class="edit" title="edit hero"
+        routerLink="/detail/{{hero.id}}">
+            <mat-icon aria-label="delete">edit</mat-icon>
+        </button>
+        <button mat-icon-button class="delete" title="delete hero"
+        (click)="delete(hero)">
+          <mat-icon aria-label="delete">delete</mat-icon>
+        </button>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
+
+    
+
+
 
     

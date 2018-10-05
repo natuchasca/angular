@@ -1,6 +1,7 @@
 <div id="search-component">
-  <h4>Hero Search</h4>
+  <!-- <h4>Hero Search</h4> -->
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <mat-icon matSuffix>search</mat-icon>
   <!--
     Every time the user types in the textbox, the binding calls search() with the textbox value, a "search term". The searchTerms becomes an Observable emitting a steady stream of search terms.
   -->
